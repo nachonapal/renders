@@ -11,6 +11,8 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
+import { motion } from "framer-motion";
+
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Navbar from "../Components/Navbar/Navbar";
 
@@ -40,7 +42,16 @@ const IndexRoute: React.FC<Props> = ({ renders }) => {
                 pt={24}
                 id={render.titulo.replace(" ", "")}
               >
-                <Stack alignItems="center">
+                <Stack
+                  as={motion.div}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1.2 },
+                  }}
+                  alignItems="center"
+                >
                   <Heading size="2xl" fontWeight="semibold">
                     {render.titulo}
                   </Heading>
@@ -49,6 +60,13 @@ const IndexRoute: React.FC<Props> = ({ renders }) => {
                 <Stack pb={6} gap={12} direction="column" alignItems={"center"}>
                   <Stack direction={{ base: "column", md: "row" }} gap={4}>
                     <Button
+                      as={motion.button}
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 1 },
+                      }}
                       w="16rem"
                       borderRadius={"full"}
                       bgColor={"secondary"}
@@ -58,16 +76,32 @@ const IndexRoute: React.FC<Props> = ({ renders }) => {
                       Custom Order
                     </Button>
                     <Button
+                      as={motion.button}
                       w="16rem"
                       borderRadius={"full"}
                       bgColor={"primary"}
                       color={"blackAlpha.900"}
                       _hover={{ bg: "primary.500" }}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 1 },
+                      }}
                     >
                       Existing Inventory
                     </Button>
                   </Stack>
-                  <ChevronDownIcon fontSize={32} />
+                  <motion.div
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 1.2 },
+                    }}
+                  >
+                    <ChevronDownIcon fontSize={32} />
+                  </motion.div>
                 </Stack>
               </Center>
             );
