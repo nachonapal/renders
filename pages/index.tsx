@@ -38,6 +38,7 @@ const IndexRoute: React.FC<Props> = ({ renders }) => {
                 justifyContent="space-between"
                 key={render.id}
                 pt={24}
+                id={render.titulo.replace(" ", "")}
               >
                 <Stack alignItems="center">
                   <Heading size="2xl" fontWeight="semibold">

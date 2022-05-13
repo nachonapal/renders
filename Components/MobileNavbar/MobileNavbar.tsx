@@ -26,8 +26,8 @@ export const MobileNavbar = ({ renders }) => {
       >
         <VStack alignItems="left">
           {renders.map((render) => (
-            <Link href={`#${render.title}`} key={render.id}>
-              <Button variant="text"> {render.title} </Button>
+            <Link href={`#${render.titulo.replace(" ", "")}`} key={render.id}>
+              <Button variant="text"> {render.titulo} </Button>
             </Link>
           ))}
         </VStack>

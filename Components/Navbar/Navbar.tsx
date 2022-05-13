@@ -37,7 +37,7 @@ const Navbar: React.FC<Props> = ({ renders }) => {
         {renders.map((render: any) => (
           <Link
             variant={"no-decoration"}
-            href={`#${render.titulo}`}
+            href={`#${render.titulo.replace(" ", "")}`}
             key={render.id}
           >
             <Button variant="ghost"> {render.titulo} </Button>
