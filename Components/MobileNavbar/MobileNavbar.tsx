@@ -6,7 +6,7 @@ export const MobileNavbar = ({ renders }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef(null);
   return (
-    <Flex display={{ base: "flex", md: "none" }}>
+    <Flex display={{ base: "flex", xl: "none" }}>
       <Button
         h={"auto"}
         px={6}

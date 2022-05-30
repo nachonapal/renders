@@ -19,17 +19,17 @@ const Navbar: React.FC<Props> = ({ renders }) => {
       py={4}
       align="center"
       justify="space-between"
-      px={{ base: 6, md: 16 }}
+      px={{ base: 6, xl: 16 }}
       top={0}
     >
       <Image
         src={logo.src}
         w={"auto"}
         alt="tesla logo"
-        h={{ base: "0.8em", md: "1em" }}
+        h={{ base: "0.8em", xl: "1em" }}
       />
       <Stack
-        display={{ base: "none", md: "flex" }}
+        display={{ base: "none", xl: "flex" }}
         direction="row"
         as="nav"
         spacing="0"
@@ -45,7 +45,7 @@ const Navbar: React.FC<Props> = ({ renders }) => {
         ))}
       </Stack>
       <Stack direction={"row"}>
-        <Box display={{ base: "none", md: "flex" }}>
+        <Box display={{ base: "none", xl: "flex" }}>
           {sections.map((section: any) => (
             <Link variant={"no-decoration"} key={section.id}>
               <Button variant="ghost"> {section.title} </Button>
