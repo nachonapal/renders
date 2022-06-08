@@ -1,19 +1,10 @@
 import { GetStaticProps } from "next";
 import { Render } from "../renders/types";
 import api from "../renders/api";
-import {
-  Button,
-  Grid,
-  Stack,
-  Text,
-  Center,
-  Heading,
-  Icon,
-} from "@chakra-ui/react";
-
-import { motion } from "framer-motion";
-
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import RenderHeading from "../Components/RenderHeading/RenderHeading";
+import RenderFooter from "../Components/RenderFooter/RenderFooter";
+import RenderLayout from "../Components/RenderLayout/RenderLayout";
+import { Flex, Grid, Stack } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar/Navbar";
 
 interface Props {
@@ -27,86 +18,16 @@ const IndexRoute: React.FC<Props> = ({ renders }) => {
     <>
       <Navbar renders={renders} />
       <Stack>
-        <Grid templateColumns="repeat(auto-fill, minmax(1fr,1fr))">
+        <Flex direction={"column"}>
           {renders.map((render) => {
             return (
-              <Center
-                bgImage={{ base: render.mobileUrl, md: render.url }}
-                bgRepeat="no-repeat"
-                bgPosition={"center"}
-                bgSize={"cover"}
-                h="100vh"
-                flexDirection={"column"}
-                justifyContent="space-between"
-                key={render.id}
-                pt={24}
-                id={render.titulo.replace(" ", "")}
-              >
-                <Stack
-                  as={motion.div}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 1.2 },
-                  }}
-                  alignItems="center"
-                >
-                  <Heading size="2xl" fontWeight="semibold">
-                    {render.titulo}
-                  </Heading>
-                  <Text>{render.descripcion}</Text>
-                </Stack>
-                <Stack pb={6} gap={12} direction="column" alignItems={"center"}>
-                  <Stack direction={{ base: "column", md: "row" }} gap={4}>
-                    <Button
-                      as={motion.button}
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                        transition: { duration: 1 },
-                      }}
-                      w="16rem"
-                      borderRadius={"full"}
-                      bgColor={"secondary"}
-                      color={"whiteAlpha.900"}
-                      _hover={{ bg: "primary.500" }}
-                    >
-                      Custom Order
-                    </Button>
-                    <Button
-                      as={motion.button}
-                      w="16rem"
-                      borderRadius={"full"}
-                      bgColor={"primary"}
-                      color={"blackAlpha.900"}
-                      _hover={{ bg: "primary.500" }}
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                        transition: { duration: 1 },
-                      }}
-                    >
-                      Existing Inventory
-                    </Button>
-                  </Stack>
-                  <motion.div
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 1.2 },
-                    }}
-                  >
-                    <ChevronDownIcon fontSize={32} />
-                  </motion.div>
-                </Stack>
-              </Center>
+              <RenderLayout key={render.id} render={render}>
+                <RenderHeading render={render} />
+                <RenderFooter></RenderFooter>
+              </RenderLayout>
             );
           })}
-        </Grid>
+        </Flex>
       </Stack>
     </>
   );
