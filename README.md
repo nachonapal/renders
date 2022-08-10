@@ -1,6 +1,6 @@
 # Page designed for a Client
 
-### Clon of Tesla Page
+### Clon of the Tesla Web Page
 
 
 
